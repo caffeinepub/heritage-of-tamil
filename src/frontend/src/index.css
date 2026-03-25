@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Tamil Heritage Palette - OKLCH */
+    /* Parchment: #F3EDE2 → oklch(0.934 0.018 75) */
+    --background: 0.934 0.018 75;
+    /* Body text dark: #2A1A16 → oklch(0.22 0.03 40) */
+    --foreground: 0.22 0.03 40;
+    /* Maroon #5A0F18 → oklch(0.32 0.11 20) */
+    --primary: 0.32 0.11 20;
+    --primary-foreground: 0.96 0.018 75;
+    /* Gold #D3B15C → oklch(0.75 0.1 75) */
+    --accent: 0.75 0.1 75;
+    --accent-foreground: 0.22 0.03 40;
+    /* Deep brown #3B1F1A → oklch(0.24 0.05 30) */
+    --secondary: 0.24 0.05 30;
+    --secondary-foreground: 0.96 0.018 75;
+    /* Cards */
+    --card: 0.96 0.014 75;
+    --card-foreground: 0.22 0.03 40;
+    --popover: 0.96 0.014 75;
+    --popover-foreground: 0.22 0.03 40;
+    /* Muted */
+    --muted: 0.88 0.02 75;
+    --muted-foreground: 0.45 0.03 40;
+    /* Borders: copper #8B5A3C → oklch(0.48 0.08 45) */
+    --border: 0.48 0.08 45;
+    --input: 0.48 0.08 45;
+    --ring: 0.75 0.1 75;
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    /* Charts */
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.32 0.11 20;
+    --sidebar-foreground: 0.96 0.018 75;
+    --sidebar-primary: 0.75 0.1 75;
+    --sidebar-primary-foreground: 0.22 0.03 40;
+    --sidebar-accent: 0.24 0.05 30;
+    --sidebar-accent-foreground: 0.96 0.018 75;
+    --sidebar-border: 0.48 0.08 45;
+    --sidebar-ring: 0.75 0.1 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Noto Serif Tamil", "Playfair Display", Georgia, serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-tamil {
+    font-family: "Noto Serif Tamil", serif;
+  }
+  .font-display {
+    font-family: "Playfair Display", "Noto Serif Tamil", Georgia, serif;
+  }
+  .gold-divider {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      oklch(0.75 0.1 75) 20%,
+      oklch(0.82 0.12 78) 50%,
+      oklch(0.75 0.1 75) 80%,
+      transparent 100%
+    );
+  }
+  .maroon-bg {
+    background-color: oklch(0.32 0.11 20);
+  }
+  .deep-brown-bg {
+    background-color: oklch(0.24 0.05 30);
+  }
+  .parchment-bg {
+    background-color: oklch(0.934 0.018 75);
+    background-image: radial-gradient(
+        ellipse at 20% 50%,
+        oklch(0.9 0.025 65 / 0.4) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 80% 20%,
+        oklch(0.92 0.02 80 / 0.3) 0%,
+        transparent 50%
+      );
+  }
+  .gold-text {
+    color: oklch(0.75 0.1 75);
+  }
+  .gold-border {
+    border-color: oklch(0.75 0.1 75);
+  }
+  .cream-text {
+    color: oklch(0.96 0.018 75);
+  }
+  /* Kolam corner decoration for parchment sections */
+  .section-kolam-corner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 8rem;
+    height: 8rem;
+    opacity: 0.1;
+    pointer-events: none;
+    object-fit: contain;
+  }
+  /* Kolam corner decoration for dark sections */
+  .section-kolam-corner-light {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 8rem;
+    height: 8rem;
+    opacity: 0.08;
+    pointer-events: none;
+    object-fit: contain;
+    filter: brightness(2);
+  }
+  /* Decorative section header band */
+  .tamil-section-header {
+    position: relative;
+    padding-top: 0.75rem;
+    border-top: 3px solid oklch(0.32 0.11 20);
+    border-bottom: 1px solid oklch(0.75 0.1 75 / 0.5);
+    margin-bottom: 2rem;
+  }
+  .tamil-section-header::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 10px;
+    background: oklch(0.75 0.1 75);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  }
+  .tamil-section-header-light {
+    position: relative;
+    padding-top: 0.75rem;
+    border-top: 3px solid oklch(0.75 0.1 75);
+    border-bottom: 1px solid oklch(0.75 0.1 75 / 0.4);
+    margin-bottom: 2rem;
+  }
+  .tamil-section-header-light::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 10px;
+    background: oklch(0.75 0.1 75);
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  }
+}
